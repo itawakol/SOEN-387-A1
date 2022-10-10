@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online registration</title>
+</head>
+<body>
+    <h1>Online Course Registration</h1>
+    <br>
+    <div class="myDiv">
+
+        <h2>Student</h2>
+        <form method="POST" action="studentServer1.php">
+            <p>Student ID (8 digits):</p>
+            <input type="text" name="id" size="8" /><br><br>
+            <input type="submit" value="Sign In" />
+        </form> <br>
+        <a href="newStudentRegistration.html">
+            <button type="submit">Don't have an account? Register here!</button>
+        </a>
+
+    </div>
+
+    <div class="myDiv">
+
+        <h2>Administrator</h2>
+        <form method="POST" action="administratorServer1.php">
+           <p>Administrator ID (8 digits):</p>
+            <input type="text" name="adminID" size="8" /> <br><br>
+            <input type="submit" value="Sign In" />
+        </form> <br>
+        <a href="newAdminRegistration.html">
+            <button type="submit">Don't have an account? Register here!</button>
+        </a>
+        
+    </div>
+
+
+</body>
+</html>
