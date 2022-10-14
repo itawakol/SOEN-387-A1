@@ -8,7 +8,7 @@
             <button type="submit">Press here to go to login page</button>
 </a>
 <a href="newStudentRegistration.html">
-            <button type="submit">Press here to enter a new ID</button>
+            <button type="submit">Press here to register a new student ID</button>
 </a>
         
 
