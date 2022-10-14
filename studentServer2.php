@@ -4,6 +4,10 @@
     <title>New Student Registration</title>
 </head>
 <body>
+<a href="registrationPage.html">
+            <button type="submit">Press here to go to login page</button>
+</a>
+        
 
 <?php
 
@@ -25,7 +29,7 @@ if ( !( $database = mysqli_connect( "localhost",
     };
 
 
-if ( !mysqli_select_db( $database ,"assignment1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 	
