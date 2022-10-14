@@ -4,13 +4,6 @@
     <title>New Student Registration</title>
 </head>
 <body>
-<a href="registrationPage.html">
-            <button type="submit">Press here to go to login page</button>
-</a>
-<a href="newStudentRegistration.html">
-            <button type="submit">Press here to register a new student ID</button>
-</a>
-        
 
 <?php
 
@@ -43,7 +36,7 @@ $stmt = mysqli_stmt_init($database);
 $result = mysqli_query($database, "SELECT * FROM student WHERE studentID='$id'");
 $num_rows = mysqli_num_rows($result);
 if($num_rows) {
-    trigger_error('student id already exists');
+    trigger_error('Student ID already exists');
 }
 	
 if (!mysqli_stmt_prepare($stmt, $query)){
@@ -60,6 +53,16 @@ echo "New Student record has been saved";
 mysqli_close( $database );
 
 ?>
+	
+<br><br>
+
+<a href="registrationPage.html">
+    <button type="submit">Press here to go to login page</button>
+</a>
+<br><br>
+<a href="newStudentRegistration.html">
+    <button type="submit">Press here to register a new ID</button>
+</a>
 
 </body>
 </html>
