@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>New Student Registration</title>
 </head>
 <body>
 
@@ -28,16 +28,19 @@ if ( !( $database = mysqli_connect( "localhost",
 if ( !mysqli_select_db( $database ,"assignment1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
+	
 $query="INSERT INTO student (studentID,firstName,lastName,address,email,phoneNumber,dateOfBirth)
 				 VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_stmt_init($database);
+	
 if (!mysqli_stmt_prepare($stmt, $query)){
     die(mysqli_error($database));
 }
+	
 mysqli_stmt_bind_param($stmt, "issssii", $id, $firstName, $lastName,
                          $address, $email, $phoneNumber, $dob);
 mysqli_stmt_execute($stmt);
-echo "record has been saved";
+echo "New Student record has been saved";
 
 
 
