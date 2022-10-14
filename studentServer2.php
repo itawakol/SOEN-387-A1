@@ -25,7 +25,7 @@ if ( !( $database = mysqli_connect( "localhost",
     };
 
 
-if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 $query="INSERT INTO student (studentID,firstName,lastName,address,email,phoneNumber,dateOfBirth)
