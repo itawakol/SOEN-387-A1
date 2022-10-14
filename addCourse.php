@@ -36,7 +36,7 @@ $stmt = mysqli_stmt_init($database);
 if (!mysqli_stmt_prepare($stmt, $query)){
     die(mysqli_error($database));
 }
-mysqli_stmt_bind_param($stmt, "issssii", $courseCode, $title, $semester,
+mysqli_stmt_bind_param($stmt, "sssssssii", $courseCode, $title, $semester,
                          $days, $time, $instructor, $room, $startDate, $endDate);
 mysqli_stmt_execute($stmt);
 echo "Course has been added";
