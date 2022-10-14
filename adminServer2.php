@@ -4,7 +4,7 @@
     <title>New Admin Registration</title>
 </head>
 <body>
-
+		
 <?php
 
 extract( $_POST ); 
@@ -37,13 +37,22 @@ if (!mysqli_stmt_prepare($stmt, $query)){
 mysqli_stmt_bind_param($stmt, "issssii", $id, $firstName, $lastName,
                          $address, $email, $phoneNumber, $dob);
 mysqli_stmt_execute($stmt);
-echo "record has been saved";
+echo "New Admin record has been saved";
 
 
 
 mysqli_close( $database );
 
 ?>
-
+	
+<br><br>
+<a href="registrationPage.html">
+    <button type="submit">Press here to go to login page</button>
+</a>
+<br><br>
+<a href="newAdminRegistration.html">
+    <button type="submit">Press here to enter a new ID</button>
+</a>
+	
 </body>
 </html>
