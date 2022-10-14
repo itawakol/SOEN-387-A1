@@ -25,12 +25,18 @@ if ( !( $database = mysqli_connect( "localhost",
     };
 
 
-if ( !mysqli_select_db( $database ,"assignment1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 $query="INSERT INTO administrator (employmentID,firstName,lastName,address,email,phoneNumber,dateOfBirth)
 				 VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_stmt_init($database);
+$result = mysqli_query($database, "SELECT * FROM student WHERE employmentID='$id'");
+$num_rows = mysqli_num_rows($result);	
+if($num_rows) {
+    trigger_error('Employment ID already exists');
+}
+	
 if (!mysqli_stmt_prepare($stmt, $query)){
     die(mysqli_error($database));
 }
@@ -51,7 +57,7 @@ mysqli_close( $database );
 </a>
 <br><br>
 <a href="newAdminRegistration.html">
-    <button type="submit">Press here to enter a new ID</button>
+    <button type="submit">Press here to register a new Admin ID</button>
 </a>
 	
 </body>
