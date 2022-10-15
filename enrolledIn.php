@@ -23,7 +23,7 @@ if ( !( $database = mysqli_connect( "localhost",
 };
 
 
-if ( !mysqli_select_db( $database ,"assignment1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 
