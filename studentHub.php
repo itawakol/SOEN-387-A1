@@ -4,6 +4,8 @@
         <title>Student Hub</title>
     </head>
 <body>
+    <h2> Courses Available to Add</h2>
+    <br><br>
     <table>
         <tr>
             <th>Course code</th>
