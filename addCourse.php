@@ -27,7 +27,7 @@ if ( !( $database = mysqli_connect( "localhost",
     };
 
 
-if ( !mysqli_select_db( $database ,"assignment1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 $query="INSERT INTO course (courseCode,title,semester,days,time,instructor,room,startDate,endDate)
@@ -46,6 +46,16 @@ echo "Course has been added";
 mysqli_close( $database );
 
 ?>
+
+<br><br>
+
+<a href="registrationPage.html">
+    <button type="submit">Press here to go to login page</button>
+</a>
+<br><br>
+<a href="adminHub.html">
+    <button type="submit">Press here to add a new course</button>
+</a>
 
 </body>
 </html>
