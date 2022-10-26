@@ -23,12 +23,12 @@ if ( !( $database = mysqli_connect( "localhost",
 };
 
 
-if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 
 $query="INSERT INTO enrolledin (studentID,courseCode1,courseCode2,courseCode3,courseCode4,courseCode5)
-				 VALUES (?, ?, ?, ?, ?)";
+				 VALUES (?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_stmt_init($database);
 
 
