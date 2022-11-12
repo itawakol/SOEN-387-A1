@@ -1,89 +1,111 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Student Hub</title>
-</head>
+    <head>
+        <title>Student Hub</title>
+    </head>
 <body>
-<H1> Student Hub</H1>
-<br>
-<h2> Courses Available to Add</h2>
-<br><br>
+<?php
+if ( !( $database = mysqli_connect( "localhost",
+"root", "") ) ) {
+die( "Could not connect to database </body></html>" );
+};
+
+
+if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
+die( "Could not open Online Registration database </body></html>" );
+};
+session_start();
+if(!isset($_SESSION["id"])){
+   header('Location: registrationPage.php');
+ 
+
+}
+?>
 <table>
-    <tr>
-        <th>Course code</th>
-        <th>Title</th>
-        <th>Semester</th>
-        <th>Days</th>
-        <th>Time</th>
-        <th>Instuctor</th>
-        <th>Room</th>
-        <th>Start date</th>
-        <th>End date</th>
+<tr>
+    <th>student name</th>
+    <th>course1</th>
+    <th>course2</th>
+    <th>course3</th>
+    <th>course4</th>
+    <th>course5</th>
+</tr>
+<?php
+$sid = $_SESSION["id"];
+$query = "SELECT * FROM enrolledin WHERE studentID=$sid";
+$result = $database->query($query);
 
-    </tr>
-    <?php
-    if ( !( $database = mysqli_connect( "localhost",
-        "root", "") ) ) {
-        die( "Could not connect to database </body></html>" );
-    };
-
-
-    if ( !mysqli_select_db( $database ,"assignment1" ) ) {
-        die( "Could not open Online Registration database </body></html>" );
-    };
-    $sql = "SELECT * FROM course";
-    $result = mysqli_query($database, $sql);
-    if(mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)){
-    ?>
-    <tr>
-        <td><?php echo $row['courseCode']; ?></td>
-        <td><?php echo $row['title']; ?></td>
-        <td><?php echo $row['semester']; ?></td>
-        <td><?php echo $row['days']; ?></td>
-        <td><?php echo $row['time']; ?></td>
-        <td><?php echo $row['instructor']; ?></td>
-        <td><?php echo $row['room']; ?></td>
-        <td><?php echo $row['startDate']; ?></td>
-        <td><?php echo $row['endDate']; ?></td>
-    <tr>
-        <?php
-        }
-        } else{
-            echo "0 result";
-        }
-        $database->close();
-        ?>
-</table>
-<br><br>
-<div class="addCourse">
-    <h2>Add Courses</h2> 
-    <p> You can add up to 5 courses per semester</p>
-    <form method="post" action="enrolledIn.php">
-
-        <label>Enter Student ID (8 digits):
-            <input type="text" name="id" /> </label><br><br>
+if ($result->num_rows > 0) {
+while($data = $result->fetch_assoc()) {
+?>
+<tr>
+<td><?php echo $data['studentID']; ?></td>
+<td><?php echo $data['courseCode1']; ?></td>
+<td><?php echo $data['courseCode2']; ?></td>
+<td><?php echo $data['courseCode3']; ?></td>
+<td><?php echo $data['courseCode4']; ?></td>
+<td><?php echo $data['courseCode5']; ?></td>
+</tr>
+<?php
+}}else { ?>
+<tr>
+ <td colspan="8">No data found</td>
+</tr>
+<h2> Courses Available to Add</h2>
+    <br><br>
+    <table>
+        <tr>
+            <th>Course code</th>
+            <th>Title</th>
+            <th>Semester</th>
+            <th>Days</th>
+            <th>Time</th>
+            <th>Instuctor</th>
+            <th>Room</th>
+            <th>Start date</th>
+            <th>End date</th>
         
-        <label>Course 1 (enter course code):
-            <input type="text" name="course1" /></label> <br><br>
+</tr>
+<?php } 
 
-        <label>Course 2 (enter course code):
-            <input type="text" name="course2"/> </label><br><br>
+$sql = "SELECT * FROM course";
+$result = mysqli_query($database, $sql);
+if(mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)){
+        ?>
+        <tr>
+            <td><?php echo $row['courseCode']; ?></td>
+            <td><?php echo $row['title']; ?></td>
+            <td><?php echo $row['semester']; ?></td>
+            <td><?php echo $row['days']; ?></td>
+            <td><?php echo $row['time']; ?></td>
+            <td><?php echo $row['instructor']; ?></td>
+            <td><?php echo $row['room']; ?></td>
+            <td><?php echo $row['startDate']; ?></td>
+            <td><?php echo $row['endDate']; ?></td>
+    <tr>
+<?php
+}
+} else{
+    echo "0 result";
+}
+$database->close();
+?>
+</table>
+ 
+    <div class="addCourse">
+        <h2>Add Courses</h2> <br>
+        <p> You can add up to 5 courses </p>
+        <form method="post" action="enrolledIn.php">
 
-        <label>Course 3 (enter course code):
-            <input type="text" name="course3"/> </label><br><br>
-
-        <label>Course 4 (enter course code):
-            <input type="text" name="course4"/> </label><br><br>
-
-        <label>Course 5 (enter course code):
-            <input type="text" name="course5"/> </label><br><br>
+        <label>Course (enter course code):
+        <input type="text" name="course1" /></label> <br><br>
         <br>
         <br>
         <input type="submit" value="Submit" />
-    </form>
+        </form>
 
-</div>
-
+    </div>
+    
 </body>
 </html>
