@@ -8,13 +8,10 @@
 <?php
 
 extract( $_POST );
+session_start();
 
-$id = $_POST['id'];
+$id = $_SESSION["id"];
 $course1= $_POST['course1'];
-$course2= $_POST['course2'];
-$course3 = $_POST['course3'];
-$course4 = $_POST['course4'];
-$course5 = $_POST['course5'];
 
 
 if ( !( $database = mysqli_connect( "localhost",
@@ -23,23 +20,54 @@ if ( !( $database = mysqli_connect( "localhost",
 };
 
 
-if ( !mysqli_select_db( $database ,"assignment1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 
-$query="INSERT INTO enrolledin (studentID,courseCode1,courseCode2,courseCode3,courseCode4,courseCode5)
-				 VALUES (?, ?, ?, ?, ?, ?)";
-$stmt = mysqli_stmt_init($database);
 
+$query1 = "SELECT courseCode1 FROM enrolledin WHERE studentID=$id";
+$result1 = mysqli_query($database, $query1);
+$row1 = mysqli_fetch_assoc($result1);
 
-if (!mysqli_stmt_prepare($stmt, $query)){
-    die(mysqli_error($database));
+$query2 = "SELECT courseCode2 FROM enrolledin WHERE studentID=$id";
+$result2 = mysqli_query($database, $query2);
+$row2 = mysqli_fetch_assoc($result2);
+
+$query3 = "SELECT courseCode3 FROM enrolledin WHERE studentID=$id";
+$result3 = mysqli_query($database, $query3);
+$row3 = mysqli_fetch_assoc($result3);
+
+$query4 = "SELECT courseCode4 FROM enrolledin WHERE studentID=$id";
+$result4 = mysqli_query($database, $query4);
+$row4 = mysqli_fetch_assoc($result4);
+
+$query5 = "SELECT courseCode5 FROM enrolledin WHERE studentID=$id";
+$result5 = mysqli_query($database, $query5);
+$row5 = mysqli_fetch_assoc($result5);
+
+if($row1 && $row1["courseCode1"] == null){
+    $update1="UPDATE enrolledin SET courseCode1= '$course1' WHERE studentID=$id";
+    $updated1=mysqli_query($database, $update1);
+
+} else if($row2 && $row2["courseCode2"]==null){
+    $update2="UPDATE enrolledin SET courseCode2= '$course1' WHERE studentID=$id";
+    $updated2=mysqli_query($database, $update2);
+
+} else if($row3 && $row3["courseCode3"]==null){
+    $update3 = "UPDATE enrolledin SET courseCode3= '$course1' WHERE studentID=$id";
+    $updated3 = mysqli_query($database, $update3);
+
+} else if($row4 && $row4["courseCode4"]==null){
+    $update4 = "UPDATE enrolledin SET courseCode4= '$course1' WHERE studentID=$id";
+    $updated4 = mysqli_query($database, $update4);
+
+} else if($row5 && $row5["courseCode5"]== null){
+    $update5 = "UPDATE enrolledin SET courseCode5= '$course1' WHERE studentID=$id";
+    $updated5 = mysqli_query($database, $update5);
+}else {
+    echo " ur already registered in 5 courses";
 }
 
-mysqli_stmt_bind_param($stmt, "isssss", $id, $course1, $course2,
-    $course3, $course4, $course5);
-mysqli_stmt_execute($stmt);
-echo "Course(s) has/have been added";
 
 
 mysqli_close( $database );
@@ -47,8 +75,11 @@ mysqli_close( $database );
 ?>
 <br><br>
 
-<a href="registrationPage.html">
-    <button type="submit">Press here to go to login page</button>
+<a href="studentHub.php">
+    <button type="submit">Press here to go to your hub </button>
+</a>
+<a href="registrationPage.php">
+    <button type="submit">Press here to go to logout </button>
 </a>
 
 </body>
