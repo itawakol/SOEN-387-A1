@@ -92,6 +92,7 @@ if(mysqli_num_rows($result) > 0) {
 $database->close();
 ?>
 </table>
+   
  
     <div class="addCourse">
         <h2>Add Courses</h2> <br>
@@ -100,6 +101,21 @@ $database->close();
 
         <label>Course (enter course code):
         <input type="text" name="course1" /></label> <br><br>
+        <br>
+        <br>
+        <input type="submit" value="Submit" />
+        </form>
+
+    </div>
+    
+     
+      <div class="deleteCourse">
+        <h2>Delete a Course</h2> <br>
+        
+        <form method="post" action="deleteEnrolledIn.php">
+
+        <label>Course (enter course code):
+        <input type="text" name="deleteCourse" /></label> <br><br>
         <br>
         <br>
         <input type="submit" value="Submit" />
