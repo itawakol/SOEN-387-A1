@@ -20,7 +20,7 @@ if ( !( $database = mysqli_connect( "localhost",
 };
 
 
-if ( !mysqli_select_db( $database ,"assignment 1" ) ) {
+if ( !mysqli_select_db( $database ,"assignment1" ) ) {
     die( "Could not open Online Registration database </body></html>" );
 };
 
@@ -48,27 +48,30 @@ $row5 = mysqli_fetch_assoc($result5);
 if($row1 && $row1["courseCode1"] == null){
     $update1="UPDATE enrolledin SET courseCode1= '$course1' WHERE studentID=$id";
     $updated1=mysqli_query($database, $update1);
+    echo "$course1 has been added";
 
 } else if($row2 && $row2["courseCode2"]==null){
     $update2="UPDATE enrolledin SET courseCode2= '$course1' WHERE studentID=$id";
     $updated2=mysqli_query($database, $update2);
+    echo "$course1 has been added";
 
 } else if($row3 && $row3["courseCode3"]==null){
     $update3 = "UPDATE enrolledin SET courseCode3= '$course1' WHERE studentID=$id";
     $updated3 = mysqli_query($database, $update3);
+    echo "$course1 has been added";
 
 } else if($row4 && $row4["courseCode4"]==null){
     $update4 = "UPDATE enrolledin SET courseCode4= '$course1' WHERE studentID=$id";
     $updated4 = mysqli_query($database, $update4);
+    echo "$course1 has been added";
 
 } else if($row5 && $row5["courseCode5"]== null){
     $update5 = "UPDATE enrolledin SET courseCode5= '$course1' WHERE studentID=$id";
     $updated5 = mysqli_query($database, $update5);
+    echo "$course1 has been added";
 }else {
-    echo " ur already registered in 5 courses";
+    echo " You are already registered in 5 courses";
 }
-
-
 
 mysqli_close( $database );
 
