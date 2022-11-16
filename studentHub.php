@@ -24,7 +24,7 @@ if(!isset($_SESSION["id"])){
 
 }
 ?>
-<h2>Student Hub </h2> <br>
+<h1>Student Hub </h1> <br>
 <h2> Personal Information</h2>
 
 <table>
