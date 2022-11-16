@@ -115,7 +115,7 @@ $database->close();
         <form method="post" action="deleteEnrolledIn.php">
 
         <label>Course (enter course code):
-        <input type="text" name="deleteCourse" /></label> <br><br>
+        <input type="text" name="course1" /></label> <br><br>
         <br>
         <br>
         <input type="submit" value="Submit" />
